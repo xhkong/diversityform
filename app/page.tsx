@@ -16,13 +16,11 @@ const client = generateClient<Schema>();
 
 export default function App() {
   const handleSubmit = async ({ data }: any) => {
-    console.log(data);
     try {
       const response = await client.models.FormSubmission.create({
         formId: formId,
         formData: JSON.stringify(data.formData)
       });
-      console.log("Form submitted successfully:", response);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
