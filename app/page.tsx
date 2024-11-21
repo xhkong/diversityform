@@ -15,9 +15,8 @@ const client = generateClient<Schema>();
 
 
 export default function App() {
-  const handleSubmit = async ({ data }: any, event) => {
+  const handleSubmit = async ({ data }: any) => {
     console.log(data);
-    console.log(event);
     try {
       const response = await client.models.FormSubmission.create({
         formId: formId,
