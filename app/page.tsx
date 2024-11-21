@@ -61,7 +61,7 @@ export default function App() {
           schema={formSchema}
           validator={validator}
           onChange={(data, id) => { console.log('changed', data, id); }}
-          onSubmit={(data,event) => { console.log('submit', data, event); handleSubmit({ data }, event); }}
+          onSubmit={(data,event) => { console.log('submit', data, event); handleSubmit({ data }); }}
           onError={(errors) => { console.log('errors', errors); }}
         />
       )}
