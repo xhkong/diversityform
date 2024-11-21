@@ -30,34 +30,7 @@ export default function App() {
   };
   const [formSchema, setFormSchema] = useState<RJSFSchema | null>(null);
   const [formId, setFormId] = useState<string | null>('b6a844f8-7e44-4885-ac6c-8e9f36e4dca3');
-  const onboardForm = {
-    "description": "Please provide your feedback to the Diversity Media Network Internship Onboarding Event that you attended, leave out your name if you want to remain anonymous.",
-    "title": "Diversity Media Network Internship Onboarding Event Feedback Form",
-    "type": "object",
-    "properties": {
-      "firstName": {
-        "type": "string",
-        "title": "First name"
-      },
-      "lastName": {
-        "type": "string",
-        "title": "Last name"
-      },
-      "ratingOverall": {
-        "maximum": 5,
-        "type": "integer",
-        "title": "Overall Rating (1-5)",
-        "minimum": 1
-      },
-      "feedback": {
-        "type": "string",
-        "title": "Feedback"
-      }
-    },
-    "required": [
-      "ratingOverall"
-    ]
-  }
+
   useEffect(() => {
     const fetchSchema = async () => {
       if(formId) {
