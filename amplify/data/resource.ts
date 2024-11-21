@@ -19,6 +19,18 @@ const schema = a.schema({
       formData: a.json(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
+  EmailInvite: a
+    .model({
+      email: a.email(),
+      formId: a.string(),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
+  PhoneInvite: a
+    .model({
+      phone: a.phone(),
+      formId: a.string(),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;

@@ -1,0 +1,28 @@
+{
+  "description": "Please provide your feedback to the Diversity Media Network Internship Onboarding Event that you attended, leave out your name if you want to remain anonymous.",
+  "title": "Diversity Media Network Internship Onboarding Event Feedback Form",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "title": "First name"
+    },
+    "lastName": {
+      "type": "string",
+      "title": "Last name"
+    },
+    "ratingOverall": {
+      "maximum": 5,
+      "type": "integer",
+      "title": "Overall Rating (1-5)",
+      "minimum": 1
+    },
+    "feedback": {
+      "type": "string",
+      "title": "Feedback"
+    }
+  },
+  "required": [
+    "ratingOverall"
+  ]
+}
