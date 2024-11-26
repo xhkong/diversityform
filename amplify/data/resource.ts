@@ -10,7 +10,7 @@ const schema = a.schema({
   CustomForm: a
     .model({
       formId: a.string(),
-      formFields: a.json(),
+      formFields: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
   FormSubmission: a
