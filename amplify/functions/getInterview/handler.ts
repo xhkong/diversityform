@@ -1,5 +1,5 @@
 import type { Handler } from 'aws-lambda';
-import { DynamoDBClient, GetItemCommand } from '@aws-sdk/client-dynamodb';
+import { DynamoDBClient, GetItemCommand, AttributeValue } from '@aws-sdk/client-dynamodb';
 import type { Schema } from "../../data/resource"
 export const handler: Schema["getInterview"]["functionHandler"] = async (event, context) => {
   const client = new DynamoDBClient({});
@@ -9,7 +9,7 @@ export const handler: Schema["getInterview"]["functionHandler"] = async (event, 
   const getParams = {
     TableName: tableName,
     Key: {
-      id: { S: id }
+      id: { S: id } as AttributeValue
     },
     ProjectionExpression: 'interviewee_name, interviewee_organization, journalist_name'
   };
