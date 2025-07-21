@@ -50,9 +50,21 @@ useEffect(() => {
   if (interviewId) {
     client.queries.getInterview({
       id: interviewId,
-    }).then(data => {
-      setInterviewInfo(data);
-      console.log("Interview Info:", data);
+    }).then((response: any) => {
+      if (response?.data) {
+        try {
+          const parsed = JSON.parse(response.data as string);
+          if (parsed.statusCode === 200 && parsed.body) {
+        const interviewDetails = JSON.parse(parsed.body);
+        setInterviewInfo(interviewDetails);
+        console.log("Interview Info:", interviewDetails);
+          } else {
+        console.error("Unexpected response format or status code:", parsed);
+          }
+        } catch (err) {
+          console.error("Failed to parse interview info:", err);
+        }
+      }
     });
   }
 }, [interviewId]);
@@ -182,7 +194,7 @@ return (
       fullWidth
       label="Journalist's Name"
       name="interviewer"
-      value={form.interviewer || interviewInfo?.interviewee_organization || ""}
+      value={form.interviewer || interviewInfo?.journalist_name || ""}
       onChange={handleChange}
       margin="normal"
       required

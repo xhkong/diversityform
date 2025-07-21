@@ -32,7 +32,7 @@ const schema = a.schema({
       formId: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
-    
+  
   getInterview: a
     .query()
     .arguments({
