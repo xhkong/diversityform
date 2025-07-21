@@ -39,7 +39,7 @@ const schema = a.schema({
       id: a.string(),
     })
     .returns(a.json())
-    .authorization(allow => [allow.guest()])
+    .authorization(allow => [allow.publicApiKey()])
     .handler(a.handler.function(getInterview)),
 });
 

@@ -43,13 +43,17 @@ const [form, setForm] = useState(initialState);
 const [donationAmt, setDonationAmt] = useState<number | undefined>(undefined);
 const searchParams = useSearchParams();
 const interviewId = searchParams.get("interviewid");
+console.log("Interview ID:", interviewId);
 const [interviewInfo, setInterviewInfo] = useState<any>(null);
 
 useEffect(() => {
   if (interviewId) {
     client.queries.getInterview({
       id: interviewId,
-    }).then(setInterviewInfo);
+    }).then(data => {
+      setInterviewInfo(data);
+      console.log("Interview Info:", data);
+    });
   }
 }, [interviewId]);
 
