@@ -1,4 +1,5 @@
 import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
+import { getInterview } from "../functions/getInterview/resource";
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -31,6 +32,15 @@ const schema = a.schema({
       formId: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
+    
+  getInterview: a
+    .query()
+    .arguments({
+      id: a.string(),
+    })
+    .returns(a.json())
+    .authorization(allow => [allow.guest()])
+    .handler(a.handler.function(getInterview)),
 });
 
 export type Schema = ClientSchema<typeof schema>;
@@ -44,6 +54,8 @@ export const data = defineData({
     },
   },
 });
+
+
 
 /*== STEP 2 ===============================================================
 Go to your frontend source code. From your client-side code, generate a

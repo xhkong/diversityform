@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^6.5.5",
+    "@aws-sdk/client-dynamodb": "^3.848.0",
     "@rjsf/core": "^5.22.4",
     "@rjsf/mui": "^5.22.4",
     "@rjsf/utils": "^5.22.4",
