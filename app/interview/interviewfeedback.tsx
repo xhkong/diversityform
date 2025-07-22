@@ -92,7 +92,7 @@ const handleChange = (
 
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
-  await client.queries.putInterviewFeedback({
+  const result = await client.queries.putInterviewFeedback({
       interviewId: interviewId ?? "",
       interviewee_name: form.name,
       interviewee_organization: form.businessName,
@@ -102,6 +102,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       rating: Number(form.rating),
       donationAmt: donationAmt,
   });
+  console.log("Feedback submission result:", result);
   setSubmitted(true);
   setForm(initialState);
   if (donationAmt === 300) {
@@ -243,6 +244,9 @@ return (
       onChange={e => setDonationAmt(e.target.value ? Number(e.target.value) : undefined)}
       margin="normal"
       inputProps={{ min: 0 }}
+      InputProps={{
+        endAdornment: <Typography sx={{ ml: 1 }}>USD</Typography>,
+      }}
       />
       <TextField
       fullWidth
@@ -255,13 +259,15 @@ return (
       rows={3}
       />
       <Button
-      type="submit"
-      variant="contained"
-      color="primary"
-      sx={{ mt: 3 }}
-      fullWidth
+        type="submit"
+        variant="contained"
+        color="primary"
+        sx={{ mt: 3 }}
+        fullWidth
       >
-      Submit Feedback
+        {donationAmt && donationAmt !== 0
+          ? "Submit Feedback & Support Diversity Media Network"
+          : "Submit Feedback"}
       </Button>
     </Box>
     <Snackbar open={submitted} autoHideDuration={4000} onClose={handleClose}>
