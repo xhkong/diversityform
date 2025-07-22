@@ -99,7 +99,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       journalist_name: form.interviewer,
       experience: form.experience,
       suggestions: form.suggestions,
-      rating: form.rating,
+      rating: Number(form.rating),
       donationAmt: donationAmt,
   });
   setSubmitted(true);
