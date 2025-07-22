@@ -1,12 +1,12 @@
 import type { Handler } from 'aws-lambda';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { PutItemCommand } from '@aws-sdk/client-dynamodb';
-
-export const handler: Handler = async (event, context) => {
+import type { Schema } from "../../data/resource"
+export const handler: Schema["putInterviewFeedback"]["functionHandler"] = async (event, context) => {
   const client = new DynamoDBClient({});
   const tableName = 'DMNInterviewFeedbacks'; // Replace with your actual table name
 
-  const body = typeof event.body === 'string' ? JSON.parse(event.body) : event.body;
+  const body = event.arguments;
 
   // Define the expected data format for the interview feedback form
   // Match the fields from the InterviewFeedback form

@@ -90,9 +90,18 @@ const handleChange = (
 };
 
 
-const handleSubmit = (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
-  
+  await client.queries.putInterviewFeedback({
+      interviewId: interviewId ?? "",
+      interviewee_name: form.name,
+      interviewee_organization: form.businessName,
+      journalist_name: form.interviewer,
+      experience: form.experience,
+      suggestions: form.suggestions,
+      rating: form.rating,
+      donationAmt: donationAmt,
+  });
   setSubmitted(true);
   setForm(initialState);
   if (donationAmt === 300) {
